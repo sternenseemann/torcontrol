@@ -1,0 +1,21 @@
+opam-version: "1.2"
+maintainer: "sternenseemann <post@lukasepple.de>"
+authors: [ "sternenseemann <post@lukasepple.de>" ]
+license: "ISC"
+homepage: "https://github.com/sternenseemann/torcontrol"
+dev-repo: "https://github.com/sternenseemann/torcontrol.git"
+bug-reports: "https://github.com/sternenseemann/torcontrol/issues"
+
+build: [
+  [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" ]
+]
+
+depends: [
+  "ocamlfind" {build}
+  "ocamlbuild" {build}
+  "topkg" {build}
+  "cstruct"
+  "nocrypto"
+]
+
+available: [ ocaml-version >= "4.02.3" ]

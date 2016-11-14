@@ -1,0 +1,8 @@
+version = "%%VERSION_NUM%%"
+description = "Tor control library"
+requires = "nocrypto cstruct"
+archive(byte) = "torcontrol.cma"
+archive(native) = "torcontrol.cmxa"
+plugin(byte) = "torcontrol.cma"
+plugin(native) = "torcontrol.cmxs"
+exists_if = "torcontrol.cma"
