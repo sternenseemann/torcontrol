@@ -5,6 +5,7 @@ license: "ISC"
 homepage: "https://github.com/sternenseemann/torcontrol"
 dev-repo: "https://github.com/sternenseemann/torcontrol.git"
 bug-reports: "https://github.com/sternenseemann/torcontrol/issues"
+doc: "https://sternenseemann.github.io/torcontrol/doc"
 
 build: [
   [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" ]
