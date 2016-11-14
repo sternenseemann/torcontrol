@@ -1,0 +1,149 @@
+<html><head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Torcontrol" rel="Chapter" href="Torcontrol.html">
+<link title="Util" rel="Chapter" href="Util.html">
+<link title="Quotation" rel="Chapter" href="Quotation.html"><title>Torcontrol</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;fingerprint&nbsp;=&nbsp;<span class="constructor">Fingerprint</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Cstruct</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;name_status&nbsp;=&nbsp;<span class="constructor">IsNamed</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">IsNotNamed</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;nick_name&nbsp;=&nbsp;<span class="constructor">Nickname</span>&nbsp;<span class="keyword">of</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;long_name&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Longname</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Torcontrol</span>.fingerprint&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Torcontrol</span>.name_status&nbsp;*&nbsp;<span class="constructor">Torcontrol</span>.nick_name)&nbsp;option<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_fingerprint&nbsp;:&nbsp;<span class="constructor">Torcontrol</span>.fingerprint&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;name_status_indicator&nbsp;:&nbsp;<span class="constructor">Torcontrol</span>.name_status&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_long_name&nbsp;:&nbsp;<span class="constructor">Torcontrol</span>.long_name&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;server_spec&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">SP_Longname</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Torcontrol</span>.long_name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">SP_Nickname</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Torcontrol</span>.nick_name<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_server_spec&nbsp;:&nbsp;<span class="constructor">Torcontrol</span>.server_spec&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;hs_address&nbsp;=&nbsp;<span class="constructor">HSAddress</span>&nbsp;<span class="keyword">of</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_hs_address&nbsp;:&nbsp;<span class="constructor">Torcontrol</span>.hs_address&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;purpose&nbsp;=&nbsp;<span class="constructor">General</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Controller</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Bridge</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_purpose&nbsp;:&nbsp;<span class="constructor">Torcontrol</span>.purpose&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;signal&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Reload</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Shutdown</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Dump</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Debug</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Halt</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Hup</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Int</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Usr1</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Usr2</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Term</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Newnym</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Cleardnscache</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Heartbeat</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_signal&nbsp;:&nbsp;<span class="constructor">Torcontrol</span>.signal&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;descriptor&nbsp;=&nbsp;<span class="constructor">Descriptor</span>&nbsp;<span class="keyword">of</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_descriptor&nbsp;:&nbsp;<span class="constructor">Torcontrol</span>.descriptor&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;reason&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Misc</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Resolve_failed</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Connection_refused</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Exit_policy</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Destroyed</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Done</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Timeout</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">No_route</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Hibernating</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Internal</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Resource_limit</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Connection_reset</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Tor_protocol</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Not_directory</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;int_of_reason&nbsp;:&nbsp;<span class="constructor">Torcontrol</span>.reason&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;close_circuit_flag&nbsp;=&nbsp;<span class="constructor">IfUnused</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_close_circuit_flag&nbsp;:&nbsp;<span class="constructor">Torcontrol</span>.close_circuit_flag&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;new_key_type&nbsp;=&nbsp;<span class="constructor">Best</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">RSA1024</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;key&nbsp;=&nbsp;<span class="constructor">New</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Torcontrol</span>.new_key_type&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Serialized_RSA1024</span>&nbsp;<span class="keyword">of</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_new_key_type&nbsp;:&nbsp;<span class="constructor">Torcontrol</span>.new_key_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_key&nbsp;:&nbsp;<span class="constructor">Torcontrol</span>.key&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;add_onion_flag&nbsp;=&nbsp;<span class="constructor">DiscardPK</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Detach</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">BasicAuth</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">NonAnonymous</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_add_onion_flag&nbsp;:&nbsp;<span class="constructor">Torcontrol</span>.add_onion_flag&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_port_mapping&nbsp;:&nbsp;int&nbsp;*&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;client_auth&nbsp;=&nbsp;<span class="constructor">ClientAuth</span>&nbsp;<span class="keyword">of</span>&nbsp;string&nbsp;*&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_client_auth&nbsp;:&nbsp;<span class="constructor">Torcontrol</span>.client_auth&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;resolve_option&nbsp;=&nbsp;<span class="constructor">ModeReverse</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_resolve_option&nbsp;:&nbsp;<span class="constructor">Torcontrol</span>.resolve_option&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;circuit_severity&nbsp;=&nbsp;<span class="constructor">Major</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Minor</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;circuit_severity_suffix&nbsp;:&nbsp;<span class="constructor">Torcontrol</span>.circuit_severity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;log_severity&nbsp;=&nbsp;<span class="constructor">Debug</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Info</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Notice</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Warn</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Error</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_log_severity&nbsp;:&nbsp;<span class="constructor">Torcontrol</span>.log_severity&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;status_type&nbsp;=&nbsp;<span class="constructor">General</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Client</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Server</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_status_type&nbsp;:&nbsp;<span class="constructor">Torcontrol</span>.status_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;event_type&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Circuit</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Torcontrol</span>.circuit_severity<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Stream</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">OR_connection</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Bandwidth</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Log</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Torcontrol</span>.log_severity<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">New_descriptors</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Address_map</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Descriptor_upload</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Descriptor_change</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Status</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Torcontrol</span>.status_type<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Guard</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Network_status</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Clients_seen</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">New_consensus</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">New_buildtime</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Signal</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">New_conf</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Transport_launched</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Stream_bandwidth</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Connection_bandwidth</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Circuit_bandwidth</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Cell_stats</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Token_bucket</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">HS_descriptors</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">HS_descriptor_content</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Network_liveness</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_event_type&nbsp;:&nbsp;<span class="constructor">Torcontrol</span>.event_type&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;all_events&nbsp;:&nbsp;<span class="constructor">Torcontrol</span>.event_type&nbsp;list<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;auth_data&nbsp;=&nbsp;<span class="constructor">Data</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Cstruct</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_auth_data&nbsp;:&nbsp;<span class="constructor">Torcontrol</span>.auth_data&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;command&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Setconf</span>&nbsp;<span class="keyword">of</span>&nbsp;(string&nbsp;*&nbsp;string&nbsp;option)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Resetconf</span>&nbsp;<span class="keyword">of</span>&nbsp;(string&nbsp;*&nbsp;string&nbsp;option)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Getconf</span>&nbsp;<span class="keyword">of</span>&nbsp;string&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Setevents</span>&nbsp;<span class="keyword">of</span>&nbsp;bool&nbsp;*&nbsp;<span class="constructor">Torcontrol</span>.event_type&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Authenticate</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Torcontrol</span>.auth_data&nbsp;option<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Saveconf</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Signal</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Torcontrol</span>.signal<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Mapaddress</span>&nbsp;<span class="keyword">of</span>&nbsp;(string&nbsp;*&nbsp;string)&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Getinfo</span>&nbsp;<span class="keyword">of</span>&nbsp;string&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Extendcircuit</span>&nbsp;<span class="keyword">of</span>&nbsp;int&nbsp;*&nbsp;string&nbsp;list&nbsp;*&nbsp;<span class="constructor">Torcontrol</span>.purpose&nbsp;option<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Setcircuitpurpose</span>&nbsp;<span class="keyword">of</span>&nbsp;int&nbsp;*&nbsp;<span class="constructor">Torcontrol</span>.purpose<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Attachstream</span>&nbsp;<span class="keyword">of</span>&nbsp;int&nbsp;*&nbsp;int&nbsp;*&nbsp;int&nbsp;option<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Postdescriptor</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Torcontrol</span>.purpose&nbsp;option&nbsp;*&nbsp;bool&nbsp;option&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Torcontrol</span>.descriptor<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Redirectstream</span>&nbsp;<span class="keyword">of</span>&nbsp;int&nbsp;*&nbsp;string&nbsp;*&nbsp;int&nbsp;option<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Closestream</span>&nbsp;<span class="keyword">of</span>&nbsp;int&nbsp;*&nbsp;<span class="constructor">Torcontrol</span>.reason<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Closecircuit</span>&nbsp;<span class="keyword">of</span>&nbsp;int&nbsp;*&nbsp;<span class="constructor">Torcontrol</span>.close_circuit_flag&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Quit</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Usefeature</span>&nbsp;<span class="keyword">of</span>&nbsp;string&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Resolve</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Torcontrol</span>.resolve_option&nbsp;list&nbsp;*&nbsp;string&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Protocolinfo</span>&nbsp;<span class="keyword">of</span>&nbsp;int&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Loadconf</span>&nbsp;<span class="keyword">of</span>&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Takeownership</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Authchallenge</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Cstruct</span>.t<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Dropguards</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Hsfetch</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Torcontrol</span>.hs_address&nbsp;*&nbsp;<span class="constructor">Torcontrol</span>.long_name&nbsp;option<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Add_onion</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Torcontrol</span>.key&nbsp;*&nbsp;<span class="constructor">Torcontrol</span>.add_onion_flag&nbsp;list&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(int&nbsp;*&nbsp;int)&nbsp;list&nbsp;*&nbsp;<span class="constructor">Torcontrol</span>.client_auth&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Del_onion</span>&nbsp;<span class="keyword">of</span>&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Hspost</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Torcontrol</span>.long_name&nbsp;option&nbsp;*&nbsp;<span class="constructor">Torcontrol</span>.descriptor<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;single_line_command&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;multi_line_command&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_command&nbsp;:&nbsp;<span class="constructor">Torcontrol</span>.command&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+<span class="keyword">end</span></code></body></html>

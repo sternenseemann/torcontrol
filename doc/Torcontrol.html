@@ -1,0 +1,942 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="next" href="Util.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Torcontrol" rel="Chapter" href="Torcontrol.html">
+<link title="Util" rel="Chapter" href="Util.html">
+<link title="Quotation" rel="Chapter" href="Quotation.html"><title>Torcontrol</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="Util.html" title="Util">Next</a>
+</div>
+<h1>Module <a href="type_Torcontrol.html">Torcontrol</a></h1>
+
+<pre><span class="keyword">module</span> Torcontrol: <code class="code"><span class="keyword">sig</span></code> <a href="Torcontrol.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
+
+<pre><code><span id="TYPEfingerprint"><span class="keyword">type</span> <code class="type"></code>fingerprint</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfingerprint.Fingerprint"><span class="constructor">Fingerprint</span></span> <span class="keyword">of</span> <code class="type">Cstruct.t</code></code></td>
+
+</tr></table>
+
+
+
+<pre><code><span id="TYPEname_status"><span class="keyword">type</span> <code class="type"></code>name_status</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTname_status.IsNamed"><span class="constructor">IsNamed</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTname_status.IsNotNamed"><span class="constructor">IsNotNamed</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><code><span id="TYPEnick_name"><span class="keyword">type</span> <code class="type"></code>nick_name</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTnick_name.Nickname"><span class="constructor">Nickname</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
+
+</tr></table>
+
+
+
+<pre><code><span id="TYPElong_name"><span class="keyword">type</span> <code class="type"></code>long_name</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTlong_name.Longname"><span class="constructor">Longname</span></span> <span class="keyword">of</span> <code class="type"><a href="Torcontrol.html#TYPEfingerprint">fingerprint</a><br>        * (<a href="Torcontrol.html#TYPEname_status">name_status</a> * <a href="Torcontrol.html#TYPEnick_name">nick_name</a>) option</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALstring_of_fingerprint"><span class="keyword">val</span> string_of_fingerprint</span> : <code class="type"><a href="Torcontrol.html#TYPEfingerprint">fingerprint</a> -> string</code></pre>
+<pre><span id="VALname_status_indicator"><span class="keyword">val</span> name_status_indicator</span> : <code class="type"><a href="Torcontrol.html#TYPEname_status">name_status</a> -> string</code></pre>
+<pre><span id="VALstring_of_long_name"><span class="keyword">val</span> string_of_long_name</span> : <code class="type"><a href="Torcontrol.html#TYPElong_name">long_name</a> -> string</code></pre>
+<pre><code><span id="TYPEserver_spec"><span class="keyword">type</span> <code class="type"></code>server_spec</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTserver_spec.SP_Longname"><span class="constructor">SP_Longname</span></span> <span class="keyword">of</span> <code class="type"><a href="Torcontrol.html#TYPElong_name">long_name</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTserver_spec.SP_Nickname"><span class="constructor">SP_Nickname</span></span> <span class="keyword">of</span> <code class="type"><a href="Torcontrol.html#TYPEnick_name">nick_name</a></code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALstring_of_server_spec"><span class="keyword">val</span> string_of_server_spec</span> : <code class="type"><a href="Torcontrol.html#TYPEserver_spec">server_spec</a> -> string</code></pre>
+<pre><code><span id="TYPEhs_address"><span class="keyword">type</span> <code class="type"></code>hs_address</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELThs_address.HSAddress"><span class="constructor">HSAddress</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALstring_of_hs_address"><span class="keyword">val</span> string_of_hs_address</span> : <code class="type"><a href="Torcontrol.html#TYPEhs_address">hs_address</a> -> string</code></pre>
+<pre><code><span id="TYPEpurpose"><span class="keyword">type</span> <code class="type"></code>purpose</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTpurpose.General"><span class="constructor">General</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTpurpose.Controller"><span class="constructor">Controller</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTpurpose.Bridge"><span class="constructor">Bridge</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALstring_of_purpose"><span class="keyword">val</span> string_of_purpose</span> : <code class="type"><a href="Torcontrol.html#TYPEpurpose">purpose</a> -> string</code></pre>
+<pre><code><span id="TYPEsignal"><span class="keyword">type</span> <code class="type"></code>signal</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTsignal.Reload"><span class="constructor">Reload</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTsignal.Shutdown"><span class="constructor">Shutdown</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTsignal.Dump"><span class="constructor">Dump</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTsignal.Debug"><span class="constructor">Debug</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTsignal.Halt"><span class="constructor">Halt</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTsignal.Hup"><span class="constructor">Hup</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTsignal.Int"><span class="constructor">Int</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTsignal.Usr1"><span class="constructor">Usr1</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTsignal.Usr2"><span class="constructor">Usr2</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTsignal.Term"><span class="constructor">Term</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTsignal.Newnym"><span class="constructor">Newnym</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTsignal.Cleardnscache"><span class="constructor">Cleardnscache</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTsignal.Heartbeat"><span class="constructor">Heartbeat</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALstring_of_signal"><span class="keyword">val</span> string_of_signal</span> : <code class="type"><a href="Torcontrol.html#TYPEsignal">signal</a> -> string</code></pre>
+<pre><code><span id="TYPEdescriptor"><span class="keyword">type</span> <code class="type"></code>descriptor</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdescriptor.Descriptor"><span class="constructor">Descriptor</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALstring_of_descriptor"><span class="keyword">val</span> string_of_descriptor</span> : <code class="type"><a href="Torcontrol.html#TYPEdescriptor">descriptor</a> -> string</code></pre>
+<pre><code><span id="TYPEreason"><span class="keyword">type</span> <code class="type"></code>reason</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTreason.Misc"><span class="constructor">Misc</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTreason.Resolve_failed"><span class="constructor">Resolve_failed</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTreason.Connection_refused"><span class="constructor">Connection_refused</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTreason.Exit_policy"><span class="constructor">Exit_policy</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTreason.Destroyed"><span class="constructor">Destroyed</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTreason.Done"><span class="constructor">Done</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTreason.Timeout"><span class="constructor">Timeout</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTreason.No_route"><span class="constructor">No_route</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTreason.Hibernating"><span class="constructor">Hibernating</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTreason.Internal"><span class="constructor">Internal</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTreason.Resource_limit"><span class="constructor">Resource_limit</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTreason.Connection_reset"><span class="constructor">Connection_reset</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTreason.Tor_protocol"><span class="constructor">Tor_protocol</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTreason.Not_directory"><span class="constructor">Not_directory</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALint_of_reason"><span class="keyword">val</span> int_of_reason</span> : <code class="type"><a href="Torcontrol.html#TYPEreason">reason</a> -> int</code></pre>
+<pre><code><span id="TYPEclose_circuit_flag"><span class="keyword">type</span> <code class="type"></code>close_circuit_flag</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTclose_circuit_flag.IfUnused"><span class="constructor">IfUnused</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALstring_of_close_circuit_flag"><span class="keyword">val</span> string_of_close_circuit_flag</span> : <code class="type"><a href="Torcontrol.html#TYPEclose_circuit_flag">close_circuit_flag</a> -> string</code></pre>
+<pre><code><span id="TYPEnew_key_type"><span class="keyword">type</span> <code class="type"></code>new_key_type</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTnew_key_type.Best"><span class="constructor">Best</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTnew_key_type.RSA1024"><span class="constructor">RSA1024</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><code><span id="TYPEkey"><span class="keyword">type</span> <code class="type"></code>key</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTkey.New"><span class="constructor">New</span></span> <span class="keyword">of</span> <code class="type"><a href="Torcontrol.html#TYPEnew_key_type">new_key_type</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTkey.Serialized_RSA1024"><span class="constructor">Serialized_RSA1024</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALstring_of_new_key_type"><span class="keyword">val</span> string_of_new_key_type</span> : <code class="type"><a href="Torcontrol.html#TYPEnew_key_type">new_key_type</a> -> string</code></pre>
+<pre><span id="VALstring_of_key"><span class="keyword">val</span> string_of_key</span> : <code class="type"><a href="Torcontrol.html#TYPEkey">key</a> -> string</code></pre>
+<pre><code><span id="TYPEadd_onion_flag"><span class="keyword">type</span> <code class="type"></code>add_onion_flag</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTadd_onion_flag.DiscardPK"><span class="constructor">DiscardPK</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTadd_onion_flag.Detach"><span class="constructor">Detach</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTadd_onion_flag.BasicAuth"><span class="constructor">BasicAuth</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTadd_onion_flag.NonAnonymous"><span class="constructor">NonAnonymous</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALstring_of_add_onion_flag"><span class="keyword">val</span> string_of_add_onion_flag</span> : <code class="type"><a href="Torcontrol.html#TYPEadd_onion_flag">add_onion_flag</a> -> string</code></pre>
+<pre><span id="VALstring_of_port_mapping"><span class="keyword">val</span> string_of_port_mapping</span> : <code class="type">int * int -> string</code></pre>
+<pre><code><span id="TYPEclient_auth"><span class="keyword">type</span> <code class="type"></code>client_auth</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTclient_auth.ClientAuth"><span class="constructor">ClientAuth</span></span> <span class="keyword">of</span> <code class="type">string * string</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALstring_of_client_auth"><span class="keyword">val</span> string_of_client_auth</span> : <code class="type"><a href="Torcontrol.html#TYPEclient_auth">client_auth</a> -> string</code></pre>
+<pre><code><span id="TYPEresolve_option"><span class="keyword">type</span> <code class="type"></code>resolve_option</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTresolve_option.ModeReverse"><span class="constructor">ModeReverse</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALstring_of_resolve_option"><span class="keyword">val</span> string_of_resolve_option</span> : <code class="type"><a href="Torcontrol.html#TYPEresolve_option">resolve_option</a> -> string</code></pre>
+<pre><code><span id="TYPEcircuit_severity"><span class="keyword">type</span> <code class="type"></code>circuit_severity</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcircuit_severity.Major"><span class="constructor">Major</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcircuit_severity.Minor"><span class="constructor">Minor</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALcircuit_severity_suffix"><span class="keyword">val</span> circuit_severity_suffix</span> : <code class="type"><a href="Torcontrol.html#TYPEcircuit_severity">circuit_severity</a> -> string</code></pre>
+<pre><code><span id="TYPElog_severity"><span class="keyword">type</span> <code class="type"></code>log_severity</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTlog_severity.Debug"><span class="constructor">Debug</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTlog_severity.Info"><span class="constructor">Info</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTlog_severity.Notice"><span class="constructor">Notice</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTlog_severity.Warn"><span class="constructor">Warn</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTlog_severity.Error"><span class="constructor">Error</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALstring_of_log_severity"><span class="keyword">val</span> string_of_log_severity</span> : <code class="type"><a href="Torcontrol.html#TYPElog_severity">log_severity</a> -> string</code></pre>
+<pre><code><span id="TYPEstatus_type"><span class="keyword">type</span> <code class="type"></code>status_type</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTstatus_type.General"><span class="constructor">General</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTstatus_type.Client"><span class="constructor">Client</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTstatus_type.Server"><span class="constructor">Server</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALstring_of_status_type"><span class="keyword">val</span> string_of_status_type</span> : <code class="type"><a href="Torcontrol.html#TYPEstatus_type">status_type</a> -> string</code></pre>
+<pre><code><span id="TYPEevent_type"><span class="keyword">type</span> <code class="type"></code>event_type</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.Circuit"><span class="constructor">Circuit</span></span> <span class="keyword">of</span> <code class="type"><a href="Torcontrol.html#TYPEcircuit_severity">circuit_severity</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.Stream"><span class="constructor">Stream</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.OR_connection"><span class="constructor">OR_connection</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.Bandwidth"><span class="constructor">Bandwidth</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.Log"><span class="constructor">Log</span></span> <span class="keyword">of</span> <code class="type"><a href="Torcontrol.html#TYPElog_severity">log_severity</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.New_descriptors"><span class="constructor">New_descriptors</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.Address_map"><span class="constructor">Address_map</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.Descriptor_upload"><span class="constructor">Descriptor_upload</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.Descriptor_change"><span class="constructor">Descriptor_change</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.Status"><span class="constructor">Status</span></span> <span class="keyword">of</span> <code class="type"><a href="Torcontrol.html#TYPEstatus_type">status_type</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.Guard"><span class="constructor">Guard</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.Network_status"><span class="constructor">Network_status</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.Clients_seen"><span class="constructor">Clients_seen</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.New_consensus"><span class="constructor">New_consensus</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.New_buildtime"><span class="constructor">New_buildtime</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.Signal"><span class="constructor">Signal</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.New_conf"><span class="constructor">New_conf</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.Transport_launched"><span class="constructor">Transport_launched</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.Stream_bandwidth"><span class="constructor">Stream_bandwidth</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.Connection_bandwidth"><span class="constructor">Connection_bandwidth</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.Circuit_bandwidth"><span class="constructor">Circuit_bandwidth</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.Cell_stats"><span class="constructor">Cell_stats</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.Token_bucket"><span class="constructor">Token_bucket</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.HS_descriptors"><span class="constructor">HS_descriptors</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.HS_descriptor_content"><span class="constructor">HS_descriptor_content</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent_type.Network_liveness"><span class="constructor">Network_liveness</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALstring_of_event_type"><span class="keyword">val</span> string_of_event_type</span> : <code class="type"><a href="Torcontrol.html#TYPEevent_type">event_type</a> -> string</code></pre>
+<pre><span id="VALall_events"><span class="keyword">val</span> all_events</span> : <code class="type"><a href="Torcontrol.html#TYPEevent_type">event_type</a> list</code></pre>
+<pre><code><span id="TYPEauth_data"><span class="keyword">type</span> <code class="type"></code>auth_data</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTauth_data.Data"><span class="constructor">Data</span></span> <span class="keyword">of</span> <code class="type">Cstruct.t</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALstring_of_auth_data"><span class="keyword">val</span> string_of_auth_data</span> : <code class="type"><a href="Torcontrol.html#TYPEauth_data">auth_data</a> -> string</code></pre>
+<pre><code><span id="TYPEcommand"><span class="keyword">type</span> <code class="type"></code>command</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Setconf"><span class="constructor">Setconf</span></span> <span class="keyword">of</span> <code class="type">(string * string option) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Resetconf"><span class="constructor">Resetconf</span></span> <span class="keyword">of</span> <code class="type">(string * string option) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Getconf"><span class="constructor">Getconf</span></span> <span class="keyword">of</span> <code class="type">string list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Setevents"><span class="constructor">Setevents</span></span> <span class="keyword">of</span> <code class="type">bool * <a href="Torcontrol.html#TYPEevent_type">event_type</a> list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Authenticate"><span class="constructor">Authenticate</span></span> <span class="keyword">of</span> <code class="type"><a href="Torcontrol.html#TYPEauth_data">auth_data</a> option</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Saveconf"><span class="constructor">Saveconf</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Signal"><span class="constructor">Signal</span></span> <span class="keyword">of</span> <code class="type"><a href="Torcontrol.html#TYPEsignal">signal</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Mapaddress"><span class="constructor">Mapaddress</span></span> <span class="keyword">of</span> <code class="type">(string * string) list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Getinfo"><span class="constructor">Getinfo</span></span> <span class="keyword">of</span> <code class="type">string list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Extendcircuit"><span class="constructor">Extendcircuit</span></span> <span class="keyword">of</span> <code class="type">int * string list * <a href="Torcontrol.html#TYPEpurpose">purpose</a> option</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Setcircuitpurpose"><span class="constructor">Setcircuitpurpose</span></span> <span class="keyword">of</span> <code class="type">int * <a href="Torcontrol.html#TYPEpurpose">purpose</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Attachstream"><span class="constructor">Attachstream</span></span> <span class="keyword">of</span> <code class="type">int * int * int option</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Postdescriptor"><span class="constructor">Postdescriptor</span></span> <span class="keyword">of</span> <code class="type"><a href="Torcontrol.html#TYPEpurpose">purpose</a> option * bool option * <a href="Torcontrol.html#TYPEdescriptor">descriptor</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Redirectstream"><span class="constructor">Redirectstream</span></span> <span class="keyword">of</span> <code class="type">int * string * int option</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Closestream"><span class="constructor">Closestream</span></span> <span class="keyword">of</span> <code class="type">int * <a href="Torcontrol.html#TYPEreason">reason</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Closecircuit"><span class="constructor">Closecircuit</span></span> <span class="keyword">of</span> <code class="type">int * <a href="Torcontrol.html#TYPEclose_circuit_flag">close_circuit_flag</a> list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Quit"><span class="constructor">Quit</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Usefeature"><span class="constructor">Usefeature</span></span> <span class="keyword">of</span> <code class="type">string list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Resolve"><span class="constructor">Resolve</span></span> <span class="keyword">of</span> <code class="type"><a href="Torcontrol.html#TYPEresolve_option">resolve_option</a> list * string list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Protocolinfo"><span class="constructor">Protocolinfo</span></span> <span class="keyword">of</span> <code class="type">int list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Loadconf"><span class="constructor">Loadconf</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Takeownership"><span class="constructor">Takeownership</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Authchallenge"><span class="constructor">Authchallenge</span></span> <span class="keyword">of</span> <code class="type">Cstruct.t</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Dropguards"><span class="constructor">Dropguards</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Hsfetch"><span class="constructor">Hsfetch</span></span> <span class="keyword">of</span> <code class="type"><a href="Torcontrol.html#TYPEhs_address">hs_address</a> * <a href="Torcontrol.html#TYPElong_name">long_name</a> option</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Add_onion"><span class="constructor">Add_onion</span></span> <span class="keyword">of</span> <code class="type"><a href="Torcontrol.html#TYPEkey">key</a> * <a href="Torcontrol.html#TYPEadd_onion_flag">add_onion_flag</a> list * (int * int) list<br>        * <a href="Torcontrol.html#TYPEclient_auth">client_auth</a> list</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Del_onion"><span class="constructor">Del_onion</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcommand.Hspost"><span class="constructor">Hspost</span></span> <span class="keyword">of</span> <code class="type"><a href="Torcontrol.html#TYPElong_name">long_name</a> option * <a href="Torcontrol.html#TYPEdescriptor">descriptor</a></code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALsingle_line_command"><span class="keyword">val</span> single_line_command</span> : <code class="type">string -> string list -> string</code></pre>
+<pre><span id="VALmulti_line_command"><span class="keyword">val</span> multi_line_command</span> : <code class="type">string -> string list -> string -> string</code></pre>
+<pre><span id="VALstring_of_command"><span class="keyword">val</span> string_of_command</span> : <code class="type"><a href="Torcontrol.html#TYPEcommand">command</a> -> string</code></pre></body></html>
