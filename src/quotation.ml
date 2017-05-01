@@ -1,7 +1,7 @@
 open Util
 
 let nibble_to_hex_char n = match n with
-  | n when n >= 0 && n <= 10 -> Char.chr (0x30 + n)
+  | n when n >= 0 && n < 10  -> Char.chr (0x30 + n)
   | n when n >= 10 && n < 16 -> Char.chr (0x61 + (n - 10))
   | _ -> raise (Invalid_argument "Nibbles must be within the range of 0x0 and 0xf")
 
